@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .file-list {
+    position: relative;
+    padding-left: theme(padding.4);
+  }
+
+  .file-list::before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-radius: theme(borderRadius.full);
+    width: 5px;
+    height: 5px;
+    background-color: theme(colors.slate.900);
+    transform: translate(-50%, -50%);
+  }
+}
