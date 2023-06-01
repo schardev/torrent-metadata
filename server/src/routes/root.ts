@@ -52,6 +52,7 @@ router.post("/", async (req, res) => {
       created: torrent.created,
       createdBy: torrent.createdBy,
       comment: torrent.comment,
+      announce: torrent.announce,
       files: torrent.files.map((file) => ({
         name: file.name,
         size: file.length,
