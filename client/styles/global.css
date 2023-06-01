@@ -2,6 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: theme(colors.slate.900);
+  }
+
+  ::-webkit-scrollbar {
+    background-color: #f5f5f5;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: theme(colors.slate.800);
+  }
+
+  @supports (scrollbar-width: thin) {
+    :root {
+      scrollbar-color: theme(colors.slate.800) theme(colors.slate.900);
+    }
+  }
+}
+
 @layer components {
   .file-list {
     position: relative;
@@ -9,14 +33,15 @@
   }
 
   .file-list::before {
+    --dot-size: 10px;
     content: " ";
     position: absolute;
     top: 50%;
     left: 0;
     border-radius: theme(borderRadius.full);
-    width: 5px;
-    height: 5px;
-    background-color: theme(colors.slate.900);
+    width: var(--dot-size);
+    height: var(--dot-size);
+    background-color: theme(colors.slate.800);
     transform: translate(-50%, -50%);
   }
 }

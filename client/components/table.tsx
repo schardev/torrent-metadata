@@ -16,6 +16,7 @@ export type TorrentData = {
     created?: string;
     createdBy?: string;
     comment?: string;
+    announce?: string[];
     files?: Array<{ name: string; size: string }>;
   };
 };
@@ -28,13 +29,16 @@ const Table = ({
   className?: string;
 }) => {
   const [isCopied, setIsCopied] = useState(false);
-  const { files, magnetURI, ...rest } = data;
+  const { files, announce, magnetURI, ...rest } = data;
+  const sortedFiles = files?.sort((a, b) => {
+    return a.name.localeCompare(b.name);
+  });
 
   return (
     <>
       <div
         className={clsx(
-          "overflow-y-scroll border border-slate-900 rounded-md mb-4",
+          "overflow-auto border border-slate-900 rounded-md mb-4",
           className
         )}>
         <table className="w-full">
@@ -80,23 +84,40 @@ const Table = ({
           </tbody>
         </table>
       </div>
-      {Array.isArray(files) && (
-        <details className="[&[open]_svg]:-rotate-90">
+      {Array.isArray(announce) && (
+        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4">
           <summary
             className={clsx(
-              "bg-slate-900 py-2 px-4 list-none text-slate-400 font-bold",
-              "select-none flex rounded-md mb-4"
+              "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
+              "select-none flex rounded-md"
+            )}>
+            <span className="mr-auto">Tracker List</span>
+            <ArrowLeft className="-rotate-180 transition-transform" />
+          </summary>
+          <ul className="ml-4 space-y-4 text-sm md:text-base overflow-auto">
+            {announce.map((tracker) => (
+              <li key={tracker}>
+                <code className="whitespace-nowrap">{tracker}</code>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+      {Array.isArray(sortedFiles) && (
+        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4">
+          <summary
+            className={clsx(
+              "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
+              "select-none flex rounded-md"
             )}>
             <span className="mr-auto">Files</span>
             <ArrowLeft className="-rotate-180 transition-transform" />
           </summary>
-          <ul className="ml-2 border-l border-l-slate-900 space-y-4 text-sm md:text-base">
-            {files.map((file) => {
+          <ul className="ml-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base">
+            {sortedFiles.map((file) => {
               const size = file.size ? filesize(file.size) : "";
               return (
-                <li
-                  key={file.name}
-                  className="file-list">
+                <li key={file.name} className="file-list">
                   <code>
                     {file.name}{" "}
                     {size && (
