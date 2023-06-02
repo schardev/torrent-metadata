@@ -6,7 +6,7 @@ import TextForm from "@/components/text-form";
 import { API_URL } from "@/lib/constant";
 import clsx from "clsx";
 import { FormEvent, useState } from "react";
-import { ArrowLeft, Info, Spinner } from "./icons";
+import { ArrowLeft, Info, Spinner } from "@/lib/icons";
 import Button from "@/components/button";
 
 const Form = () => {
@@ -29,7 +29,9 @@ const Form = () => {
     });
 
     const serverReq = await res.json();
-    if (res.status !== 200) setError(serverReq?.error || "Server error!");
+    // 504 - request timeout
+    if (res.status !== 200 && res.status !== 504)
+      setError(serverReq?.error || "Server error!");
 
     setData(serverReq);
   };
@@ -85,6 +87,15 @@ const Form = () => {
           <ArrowLeft className="inline" />
           <span className="align-middle">Go Back</span>
         </button>
+        {data.message && (
+          <div className="text-cyan-500 border border-cyan-500 rounded-md p-4 mb-6 mt-4">
+            <div className="flex gap-2 items-center mb-4">
+              <Info className="text-sm" />
+              <span className="font-medium">Info</span>
+            </div>
+            <p>{data.message}</p>
+          </div>
+        )}
         <Table data={torrentData} className="mt-6" />
       </>
     );

@@ -1,6 +1,6 @@
 "use client";
 
-import { Cloud } from "@/app/icons";
+import { Cloud } from "@/lib/icons";
 import clsx from "clsx";
 import { ChangeEvent, DragEvent } from "react";
 import { buttonVariants } from "./button";

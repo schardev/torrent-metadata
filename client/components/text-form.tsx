@@ -1,4 +1,4 @@
-import { Search } from "@/app/icons";
+import { Search } from "@/lib/icons";
 import clsx from "clsx";
 import Button from "./button";
 

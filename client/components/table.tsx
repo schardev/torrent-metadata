@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Button from "./button";
-import { ArrowLeft, Check, Clipboard } from "@/app/icons";
+import { ArrowLeft, Check, Clipboard } from "@/lib/icons";
 import { useState } from "react";
 import { copyToClipboard } from "@/lib/util";
 import { filesize } from "filesize";
@@ -19,6 +19,7 @@ export type TorrentData = {
     announce?: string[];
     files?: Array<{ name: string; size: string }>;
   };
+  message?: string;
 };
 
 const Table = ({
@@ -36,6 +37,7 @@ const Table = ({
 
   return (
     <>
+      {/* main table */}
       <div
         className={clsx(
           "overflow-auto border border-slate-900 rounded-md mb-4",
@@ -84,6 +86,8 @@ const Table = ({
           </tbody>
         </table>
       </div>
+
+      {/* tracker list */}
       {Array.isArray(announce) && (
         <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4">
           <summary
@@ -94,7 +98,7 @@ const Table = ({
             <span className="mr-auto">Tracker List</span>
             <ArrowLeft className="-rotate-180 transition-transform" />
           </summary>
-          <ul className="ml-4 space-y-4 text-sm md:text-base overflow-auto">
+          <ul className="ml-4 pb-2 space-y-4 text-sm md:text-base overflow-auto">
             {announce.map((tracker) => (
               <li key={tracker}>
                 <code className="whitespace-nowrap">{tracker}</code>
@@ -103,7 +107,9 @@ const Table = ({
           </ul>
         </details>
       )}
-      {Array.isArray(sortedFiles) && (
+
+      {/* files list */}
+      {Array.isArray(sortedFiles) && sortedFiles.length > 0 && (
         <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4">
           <summary
             className={clsx(
@@ -113,11 +119,11 @@ const Table = ({
             <span className="mr-auto">Files</span>
             <ArrowLeft className="-rotate-180 transition-transform" />
           </summary>
-          <ul className="ml-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base">
+          <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
             {sortedFiles.map((file) => {
               const size = file.size ? filesize(file.size) : "";
               return (
-                <li key={file.name} className="file-list">
+                <li key={file.name} className="pl-4">
                   <code>
                     {file.name}{" "}
                     {size && (
