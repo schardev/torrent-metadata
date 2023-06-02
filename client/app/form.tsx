@@ -6,8 +6,9 @@ import TextForm from "@/components/text-form";
 import { API_URL } from "@/lib/constant";
 import clsx from "clsx";
 import { FormEvent, useState } from "react";
-import { ArrowLeft, Info, Spinner } from "@/lib/icons";
+import { ArrowLeft, Spinner } from "@/lib/icons";
 import Button from "@/components/button";
+import Callout from "@/components/callout";
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -63,13 +64,9 @@ const Form = () => {
   if (error) {
     return (
       <>
-        <div className="text-red-500 border border-red-500 rounded-md p-4 mb-6">
-          <div className="flex gap-2 items-center mb-4">
-            <Info className="text-sm" />
-            <span className="font-medium">Error</span>
-          </div>
+        <Callout title="Error" variant={{ color: "error" }} className="mb-6">
           <p>{error}</p>
-        </div>
+        </Callout>
         <Button className="px-2 py-1" onClick={resetState}>
           Try Again
         </Button>
@@ -88,13 +85,12 @@ const Form = () => {
           <span className="align-middle">Go Back</span>
         </button>
         {data.message && (
-          <div className="text-cyan-500 border border-cyan-500 rounded-md p-4 mb-6 mt-4">
-            <div className="flex gap-2 items-center mb-4">
-              <Info className="text-sm" />
-              <span className="font-medium">Info</span>
-            </div>
+          <Callout
+            title="info"
+            variant={{ color: "info" }}
+            className="mb-6 mt-6">
             <p>{data.message}</p>
-          </div>
+          </Callout>
         )}
         <Table data={torrentData} className="mt-6" />
       </>

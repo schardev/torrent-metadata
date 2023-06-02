@@ -88,8 +88,8 @@ const Table = ({
       </div>
 
       {/* tracker list */}
-      {Array.isArray(announce) && (
-        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4">
+      {Array.isArray(announce) && announce.length && (
+        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4 cursor-pointer">
           <summary
             className={clsx(
               "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
@@ -110,13 +110,18 @@ const Table = ({
 
       {/* files list */}
       {Array.isArray(sortedFiles) && sortedFiles.length > 0 && (
-        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4">
+        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 cursor-pointer">
           <summary
             className={clsx(
               "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
               "select-none flex rounded-md"
             )}>
-            <span className="mr-auto">Files</span>
+            <p className="mr-auto">
+              Files
+              <code className="text-xs md:text-sm font-normal align-middle ml-2">
+                ({sortedFiles.length})
+              </code>
+            </p>
             <ArrowLeft className="-rotate-180 transition-transform" />
           </summary>
           <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
