@@ -16,6 +16,7 @@ app.use((req, _, next) => {
 });
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Route handlers
 app.use("/", upload.single("torrent_file"), rootRouter);

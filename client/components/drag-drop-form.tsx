@@ -23,11 +23,11 @@ const DragDropForm = ({
   };
 
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.classList.add("border-slate-100");
+    e.currentTarget.classList.add("!border-slate-100");
   };
 
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.classList.remove("border-slate-100");
+    e.currentTarget.classList.remove("!border-slate-100");
   };
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
