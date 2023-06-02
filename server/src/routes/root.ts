@@ -33,6 +33,10 @@ router.get("/", (_, res) => {
   res.status(200).json({ status: "ok" });
 });
 
+router.get("/ping", (req, res) => {
+  res.send(`pong: ${Date.now() - req.startTime}ms`);
+});
+
 // This has to come first for `req.parsedTorrent` to be validated and populated
 router.post("/", isValidTorrentData);
 

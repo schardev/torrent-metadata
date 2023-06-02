@@ -5,7 +5,7 @@ import Table, { TorrentData } from "@/components/table";
 import TextForm from "@/components/text-form";
 import { API_URL } from "@/lib/constant";
 import clsx from "clsx";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { ArrowLeft, Spinner } from "@/lib/icons";
 import Button from "@/components/button";
 import Callout from "@/components/callout";
@@ -14,6 +14,11 @@ const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<boolean | string>(false);
   const [data, setData] = useState<TorrentData | null>(null);
+
+  // hit endpoint to warm up api instance
+  useEffect(() => {
+    fetch(`${API_URL}/ping`);
+  }, []);
 
   const resetState = () => {
     setIsSubmitted(false);

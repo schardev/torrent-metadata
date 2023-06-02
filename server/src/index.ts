@@ -10,6 +10,10 @@ const upload = multer();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
+app.use((req, _, next) => {
+  req.startTime = Date.now();
+  next();
+});
 app.use(cors());
 app.use(express.json());
 
