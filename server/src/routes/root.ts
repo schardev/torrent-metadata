@@ -1,14 +1,33 @@
 import express from "express";
 import { isValidTorrentData } from "../middlewares.js";
 import { log } from "../utils.js";
-import WebTorrent from "webtorrent";
+import WebTorrent, { type Torrent } from "webtorrent";
 
 const router = express.Router();
-const SITE_URL = "https://torrentmeta.vercel.app";
+const SITE_URL = process.env.SITE_URL;
 const METADATA_FETCH_TIMEOUT = 6000; // in ms
+const constructData = (torrent: Torrent) => {
+  const data = {
+    name: torrent.name,
+    infoHash: torrent.infoHash,
+    magnetURI: torrent.magnetURI,
+    peers: torrent.numPeers,
+    created: torrent.created,
+    createdBy: torrent.createdBy,
+    comment: torrent.comment,
+    announce: torrent.announce,
+    files: torrent.files.map((file) => ({
+      name: file.name,
+      size: file.length,
+      path: file.path,
+    })),
+  };
+
+  return data;
+};
 
 router.get("/", (_, res) => {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "production" && SITE_URL) {
     return res.redirect(301, SITE_URL);
   }
   res.status(200).json({ status: "ok" });
@@ -31,7 +50,7 @@ router.post("/", async (req, res) => {
   // to have `infoHash` field)
   const timeoutID = setTimeout(async () => {
     res.status(504).json({
-      data: parsedTorrent,
+      data: constructData(torrent),
       message:
         "The torrent provided doesn't seem to have enough peers to fetch metadata. Returning limited info.",
     });
@@ -43,24 +62,8 @@ router.post("/", async (req, res) => {
 
   torrent.on("metadata", () => {
     log("Metadata parsed...");
-
-    const data = {
-      name: torrent.name,
-      infoHash: torrent.infoHash,
-      magnetURI: torrent.magnetURI,
-      peers: torrent.numPeers,
-      created: torrent.created,
-      createdBy: torrent.createdBy,
-      comment: torrent.comment,
-      announce: torrent.announce,
-      files: torrent.files.map((file) => ({
-        name: file.name,
-        size: file.length,
-      })),
-    };
-
     clearTimeout(timeoutID);
-    res.json({ data });
+    res.json({ data: constructData(torrent) });
 
     client.remove(torrent, {}, () => {
       log("Torrent removed.");
