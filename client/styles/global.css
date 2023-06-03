@@ -12,36 +12,16 @@
   }
 
   ::-webkit-scrollbar {
-    background-color: #f5f5f5;
+    background-color: theme(colors.slate.900);
   }
 
   ::-webkit-scrollbar-thumb {
     background-color: theme(colors.slate.800);
   }
 
-  @supports (scrollbar-width: thin) {
+  @supports (scrollbar-color: red green) {
     :root {
       scrollbar-color: theme(colors.slate.800) theme(colors.slate.900);
     }
   }
 }
-
-/* @layer components {
-  .file-list {
-    position: relative;
-    padding-left: theme(padding.4);
-  }
-
-  .file-list::before {
-    --dot-size: 10px;
-    content: " ";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    border-radius: theme(borderRadius.full);
-    width: var(--dot-size);
-    height: var(--dot-size);
-    background-color: theme(colors.slate.800);
-    transform: translate(-50%, -50%);
-  }
-} */

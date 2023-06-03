@@ -87,7 +87,7 @@ If there is an error it'll respond with an `error` field that has the error mess
 ```js
 {
     "error": "Invalid info hash, magnet URI or .torrent file.",
-    "query": "magnet:?xt=urn:this-is-an-invalid-magnet-lint"
+    "query": "magnet:?xt=urn:this-is-an-invalid-magnet-link"
 }
 ```
 
