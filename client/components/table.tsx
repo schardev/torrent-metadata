@@ -88,7 +88,7 @@ const Table = ({
       </div>
 
       {/* tracker list */}
-      {Array.isArray(announce) && announce.length && (
+      {Array.isArray(announce) && !!announce.length && (
         <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4 cursor-pointer">
           <summary
             className={clsx(
