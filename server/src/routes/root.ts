@@ -6,6 +6,8 @@ import WebTorrent, { type Torrent } from "webtorrent";
 const router = express.Router();
 const SITE_URL = process.env.SITE_URL;
 const METADATA_FETCH_TIMEOUT = 6000; // in ms
+const webtorrent = new WebTorrent();
+
 const constructData = (torrent: Torrent) => {
   const data = {
     name: torrent.name,
@@ -42,10 +44,8 @@ router.post("/", isValidTorrentData);
 
 router.post("/", async (req, res) => {
   log("Init POST ...");
-  const client = new WebTorrent();
   const parsedTorrent = req.parsedTorrent;
-  const torrent = client.add(parsedTorrent, {
-    path: process.cwd(),
+  const torrent = webtorrent.add(parsedTorrent, {
     destroyStoreOnDestroy: true,
   });
 
@@ -59,7 +59,7 @@ router.post("/", async (req, res) => {
         "The torrent provided doesn't seem to have enough peers to fetch metadata. Returning limited info.",
     });
 
-    client.remove(torrent, {}, () => {
+    webtorrent.remove(torrent, {}, () => {
       log("Timeout while fetching torrent metadata.");
     });
   }, METADATA_FETCH_TIMEOUT);
@@ -69,7 +69,7 @@ router.post("/", async (req, res) => {
     clearTimeout(timeoutID);
     res.json({ data: constructData(torrent) });
 
-    client.remove(torrent, {}, () => {
+    webtorrent.remove(torrent, {}, () => {
       log("Torrent removed.");
     });
   });
