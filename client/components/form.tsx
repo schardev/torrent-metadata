@@ -60,7 +60,7 @@ const Form = () => {
           <span
             className={clsx(
               "text-slate-400 absolute bg-slate-950 px-4",
-              "left-[calc(50%-1rem)] -translate-y-1/2"
+              "left-[calc(50%-1rem)] -translate-y-1/2",
             )}>
             OR
           </span>

@@ -47,7 +47,7 @@ const DragDropForm = ({
         "relative bg-slate-900/20 rounded-lg text-slate-400",
         "border-2 border-dashed border-slate-700 select-none",
         "flex flex-col gap-4 items-center justify-center",
-        "py-10 lg:py-14"
+        "py-10 lg:py-14",
       )}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}

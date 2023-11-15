@@ -13,7 +13,7 @@ const Details = ({
       <summary
         className={clsx(
           "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
-          "select-none flex rounded-md"
+          "select-none flex rounded-md",
         )}>
         {title}
         <NavArrowLeft className="ml-auto -rotate-180 transition-transform" />

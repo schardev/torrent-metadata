@@ -42,14 +42,14 @@ const Table = ({
       <div
         className={clsx(
           "overflow-auto border border-slate-800 rounded-md mb-4",
-          className
+          className,
         )}>
         <table className="w-full">
           <tbody
             className={clsx(
               "[&_th]:p-4 [&_th]:text-left [&_th]:bg-slate-900 [&_th>span]:text-slate-400",
               "[&_td]:p-4 [&_td]:border-b [&_td]:border-b-slate-800",
-              "whitespace-nowrap text-sm md:text-base"
+              "whitespace-nowrap text-sm md:text-base",
             )}>
             {Object.entries(rest).map(([key, value]) => {
               return (
@@ -125,7 +125,7 @@ const Table = ({
           }>
           <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
             {sortedFiles.map((file) => {
-              const size = file.size ? filesize(file.size) : "";
+              const size = file.size ? filesize(+file.size) : "";
               return (
                 <li key={file.name} className="pl-4">
                   <code>

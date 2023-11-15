@@ -18,7 +18,7 @@ const TextForm = () => {
           "border border-slate-700",
           "placeholder:text-sm placeholder:text-slate-400 md:placeholder:text-base",
           "focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-300",
-          "focus-visible:outline-offset-2"
+          "focus-visible:outline-offset-2",
         )}
       />
       <Button className="flex gap-2 items-center p-2 md:px-4 text-sm md:text-base">

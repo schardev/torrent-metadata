@@ -73,7 +73,7 @@ export default function RootLayout({
         className={clsx(
           "bg-slate-950 text-slate-50 min-h-screen font-sans selection:bg-slate-600",
           "flex justify-center",
-          inter.variable
+          inter.variable,
         )}>
         {children}
       </body>
