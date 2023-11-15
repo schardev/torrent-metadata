@@ -1,11 +1,12 @@
 "use client";
 
 import clsx from "clsx";
-import Button from "./button";
-import { NavArrowLeft, Check, PasteClipboard } from "iconoir-react";
+import { Check, PasteClipboard } from "iconoir-react";
 import { useState } from "react";
-import { copyToClipboard } from "@/lib/util";
 import { filesize } from "filesize";
+import { copyToClipboard } from "@/lib/util";
+import Button from "./button";
+import Details from "./details";
 
 export type TorrentData = {
   data: {
@@ -40,15 +41,14 @@ const Table = ({
       {/* main table */}
       <div
         className={clsx(
-          "overflow-auto border border-slate-900 rounded-md mb-4",
+          "overflow-auto border border-slate-800 rounded-md mb-4",
           className
         )}>
         <table className="w-full">
           <tbody
             className={clsx(
-              "[&_th]:p-4 [&_th]:text-left [&_th]:bg-slate-900",
-              "[&_td]:p-4 [&_td]:border-b [&_td]:border-b-slate-900",
-              "[&_th>span]:text-slate-400",
+              "[&_th]:p-4 [&_th]:text-left [&_th]:bg-slate-900 [&_th>span]:text-slate-400",
+              "[&_td]:p-4 [&_td]:border-b [&_td]:border-b-slate-800",
               "whitespace-nowrap text-sm md:text-base"
             )}>
             {Object.entries(rest).map(([key, value]) => {
@@ -78,7 +78,11 @@ const Table = ({
                       setIsCopied(false);
                     }, 3500);
                   }}>
-                  {isCopied ? <Check className="w-5" /> : <PasteClipboard className="w-5" />}
+                  {isCopied ? (
+                    <Check className="w-5" />
+                  ) : (
+                    <PasteClipboard className="w-5" />
+                  )}
                   <span>{isCopied ? "Copied" : "Copy"}</span>
                 </Button>
               </td>
@@ -89,15 +93,15 @@ const Table = ({
 
       {/* tracker list */}
       {Array.isArray(announce) && !!announce.length && (
-        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 mb-4 cursor-pointer">
-          <summary
-            className={clsx(
-              "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
-              "select-none flex rounded-md"
-            )}>
-            <span className="mr-auto">Tracker List</span>
-            <NavArrowLeft className="-rotate-180 transition-transform" />
-          </summary>
+        <Details
+          title={
+            <p>
+              Tracker List
+              <code className="text-xs md:text-sm font-normal align-middle ml-2">
+                ({announce.length})
+              </code>
+            </p>
+          }>
           <ul className="ml-4 pb-2 space-y-4 text-sm md:text-base overflow-auto">
             {announce.map((tracker) => (
               <li key={tracker}>
@@ -105,25 +109,20 @@ const Table = ({
               </li>
             ))}
           </ul>
-        </details>
+        </Details>
       )}
 
       {/* files list */}
       {Array.isArray(sortedFiles) && sortedFiles.length > 0 && (
-        <details className="[&[open]_svg]:-rotate-90 [&[open]_summary]:mb-4 cursor-pointer">
-          <summary
-            className={clsx(
-              "bg-slate-900 py-2 px-4 md:py-4 list-none text-slate-400 font-bold",
-              "select-none flex rounded-md"
-            )}>
-            <p className="mr-auto">
+        <Details
+          title={
+            <p>
               Files
               <code className="text-xs md:text-sm font-normal align-middle ml-2">
                 ({sortedFiles.length})
               </code>
             </p>
-            <NavArrowLeft className="-rotate-180 transition-transform" />
-          </summary>
+          }>
           <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
             {sortedFiles.map((file) => {
               const size = file.size ? filesize(file.size) : "";
@@ -141,7 +140,7 @@ const Table = ({
               );
             })}
           </ul>
-        </details>
+        </Details>
       )}
     </>
   );

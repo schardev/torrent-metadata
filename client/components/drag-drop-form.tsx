@@ -33,7 +33,7 @@ const DragDropForm = ({
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleFile(e.dataTransfer.files[0]);
-    e.currentTarget.classList.remove("border-slate-100");
+    e.currentTarget.classList.remove("!border-slate-100");
   };
 
   const handleFileAdd = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,26 +46,26 @@ const DragDropForm = ({
       className={clsx(
         "relative bg-slate-900/20 rounded-lg text-slate-400",
         "border-2 border-dashed border-slate-700 select-none",
-        "flex flex-col items-center justify-center",
+        "flex flex-col gap-4 items-center justify-center",
         "py-10 lg:py-14"
       )}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
       onDrop={handleDrop}>
-      <div className="space-y-4 md:text-lg text-center pointer-events-none mb-4">
+      <div className="space-y-4 md:text-lg text-center pointer-events-none">
         <CloudUpload className="text-4xl mx-auto" />
         <p>
-          Drag and drop <code className="inline">`.torrent`</code> file
+          Drag and drop <code className="inline">.torrent</code> file
         </p>
         <p>OR</p>
       </div>
       <label
         htmlFor="torrent_file"
-        className={clsx(
-          buttonVariants({ color: "secondary" }),
-          "inline px-4 py-2"
-        )}>
+        className={buttonVariants({
+          color: "secondary",
+          className: "inline px-4 py-2",
+        })}>
         Browse Files
       </label>
       <input

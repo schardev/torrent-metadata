@@ -4,7 +4,7 @@ import Button from "./button";
 
 const TextForm = () => {
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 flex-wrap">
       <input
         placeholder="Paste magnet URL or info hash here..."
         type="text"
@@ -21,9 +21,9 @@ const TextForm = () => {
           "focus-visible:outline-offset-2"
         )}
       />
-      <Button className="flex gap-2 items-center px-2 md:px-4 text-sm md:text-base">
+      <Button className="flex gap-2 items-center p-2 md:px-4 text-sm md:text-base">
         <span>Search</span>
-        <Search />
+        <Search className="w-5" />
       </Button>
     </div>
   );

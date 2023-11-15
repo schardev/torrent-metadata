@@ -13,6 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url),
   keywords: [
     "torrent",
     "metadata",

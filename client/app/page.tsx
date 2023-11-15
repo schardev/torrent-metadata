@@ -1,5 +1,5 @@
 import siteConfig from "@/lib/siteConfig";
-import Form from "./form";
+import Form from "@/components/form";
 
 const Page = () => {
   return (

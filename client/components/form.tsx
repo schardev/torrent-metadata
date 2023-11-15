@@ -1,15 +1,15 @@
 "use client";
 
+import clsx from "clsx";
+import { NavArrowLeft } from "iconoir-react";
+import { FormEvent, useEffect, useState } from "react";
+import Button from "@/components/button";
+import Callout from "@/components/callout";
 import DragDropForm from "@/components/drag-drop-form";
 import Table, { TorrentData } from "@/components/table";
 import TextForm from "@/components/text-form";
 import { API_URL } from "@/lib/constant";
-import clsx from "clsx";
-import { FormEvent, useEffect, useState } from "react";
-import { NavArrowLeft } from "iconoir-react";
 import { Spinner } from "@/lib/icons";
-import Button from "@/components/button";
-import Callout from "@/components/callout";
 
 const Form = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -52,16 +52,21 @@ const Form = () => {
   if (!isSubmitted) {
     return (
       <form onSubmit={handleFormSubmit}>
+        {/* text input */}
         <TextForm />
+
+        {/* separator */}
         <div className="my-12 border-b border-b-slate-700 relative">
           <span
             className={clsx(
-              "text-sm text-slate-400 absolute bg-slate-950",
-              "px-2 left-[calc(50%-0.5rem)] translate-y-[-50%]"
+              "text-slate-400 absolute bg-slate-950 px-4",
+              "left-[calc(50%-1rem)] -translate-y-1/2"
             )}>
             OR
           </span>
         </div>
+
+        {/* drag and drop */}
         <DragDropForm submitFormData={submitFormData} />
       </form>
     );
@@ -85,10 +90,10 @@ const Form = () => {
     return (
       <>
         <button
-          className={clsx("text-slate-400 text-sm md:text-base")}
+          className="text-slate-400 text-sm md:text-base hover:text-slate-200"
           onClick={resetState}>
-          <NavArrowLeft className="inline" />
-          <span className="align-middle">Go Back</span>
+          <NavArrowLeft className="inline w-5" />
+          <span className="align-middle">back</span>
         </button>
         {data.message && (
           <Callout
