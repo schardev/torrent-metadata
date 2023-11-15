@@ -6,7 +6,8 @@ import TextForm from "@/components/text-form";
 import { API_URL } from "@/lib/constant";
 import clsx from "clsx";
 import { FormEvent, useEffect, useState } from "react";
-import { ArrowLeft, Spinner } from "@/lib/icons";
+import { NavArrowLeft } from "iconoir-react";
+import { Spinner } from "@/lib/icons";
 import Button from "@/components/button";
 import Callout from "@/components/callout";
 
@@ -86,7 +87,7 @@ const Form = () => {
         <button
           className={clsx("text-slate-400 text-sm md:text-base")}
           onClick={resetState}>
-          <ArrowLeft className="inline" />
+          <NavArrowLeft className="inline" />
           <span className="align-middle">Go Back</span>
         </button>
         {data.message && (

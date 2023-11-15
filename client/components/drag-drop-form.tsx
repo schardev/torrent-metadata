@@ -1,6 +1,6 @@
 "use client";
 
-import { Cloud } from "@/lib/icons";
+import { CloudUpload } from "iconoir-react";
 import clsx from "clsx";
 import { ChangeEvent, DragEvent } from "react";
 import { buttonVariants } from "./button";
@@ -54,7 +54,7 @@ const DragDropForm = ({
       onDragOver={handleDragOver}
       onDrop={handleDrop}>
       <div className="space-y-4 md:text-lg text-center pointer-events-none mb-4">
-        <Cloud className="text-4xl mx-auto" />
+        <CloudUpload className="text-4xl mx-auto" />
         <p>
           Drag and drop <code className="inline">`.torrent`</code> file
         </p>

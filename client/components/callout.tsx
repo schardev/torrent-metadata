@@ -1,4 +1,4 @@
-import { Info } from "@/lib/icons";
+import { InfoCircle } from "iconoir-react";
 import clsx from "clsx";
 import { VariantProps, tv } from "tailwind-variants";
 
@@ -26,7 +26,7 @@ const Callout = ({ title, children, variant, className }: CalloutProps) => {
   return (
     <div className={clsx(calloutVariants({ ...variant, className }))}>
       <div className="flex gap-2 items-center mb-4">
-        <Info className="text-sm" />
+        <InfoCircle className="text-sm" />
         <span className="font-medium">{title}</span>
       </div>
       <div>{children}</div>

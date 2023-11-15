@@ -1,4 +1,4 @@
-import { Search } from "@/lib/icons";
+import { Search } from "iconoir-react";
 import clsx from "clsx";
 import Button from "./button";
 

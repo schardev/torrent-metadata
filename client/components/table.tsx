@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import Button from "./button";
-import { ArrowLeft, Check, Clipboard } from "@/lib/icons";
+import { NavArrowLeft, Check, PasteClipboard } from "iconoir-react";
 import { useState } from "react";
 import { copyToClipboard } from "@/lib/util";
 import { filesize } from "filesize";
@@ -78,7 +78,7 @@ const Table = ({
                       setIsCopied(false);
                     }, 3500);
                   }}>
-                  {isCopied ? <Check /> : <Clipboard />}
+                  {isCopied ? <Check className="w-5" /> : <PasteClipboard className="w-5" />}
                   <span>{isCopied ? "Copied" : "Copy"}</span>
                 </Button>
               </td>
@@ -96,7 +96,7 @@ const Table = ({
               "select-none flex rounded-md"
             )}>
             <span className="mr-auto">Tracker List</span>
-            <ArrowLeft className="-rotate-180 transition-transform" />
+            <NavArrowLeft className="-rotate-180 transition-transform" />
           </summary>
           <ul className="ml-4 pb-2 space-y-4 text-sm md:text-base overflow-auto">
             {announce.map((tracker) => (
@@ -122,7 +122,7 @@ const Table = ({
                 ({sortedFiles.length})
               </code>
             </p>
-            <ArrowLeft className="-rotate-180 transition-transform" />
+            <NavArrowLeft className="-rotate-180 transition-transform" />
           </summary>
           <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
             {sortedFiles.map((file) => {
