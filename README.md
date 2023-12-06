@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./client/public/icon.png" alt="Torrent Metadata">
+    <img src="./packages/client/public/icon.png" alt="Torrent Metadata">
     <h1>Torrent Metadata</h1>
     <p align="center">A simple web app to extract metadata from <code>.torrent</code> file, magnet URI or torrent info hash.</p>
 </div>

@@ -1,0 +1,20 @@
+{
+  "name": "torrent-metadata",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm -r --parallel run build",
+    "start": "pnpm -r --parallel run start",
+    "dev": "pnpm -r --parallel run dev",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && pnpm -r run lint"
+  },
+  "packageManager": "pnpm@8.11.0",
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "prettier": {
+    "bracketSameLine": true
+  }
+}
