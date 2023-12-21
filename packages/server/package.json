@@ -19,7 +19,7 @@
     "webtorrent": "^2.1.30"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.4.11",
+    "@flydotio/dockerfile": "^0.5.0",
     "@types/cors": "^2.8.17",
     "@types/debug": "^4.1.12",
     "@types/express": "^4.17.21",
