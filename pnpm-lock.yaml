@@ -21,13 +21,13 @@ importers:
         specifier: ^10.1.0
         version: 10.1.0
       next:
-        specifier: 14.0.4
+        specifier: ^14.0.4
         version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
       react:
-        specifier: 18.2.0
+        specifier: ^18.2.0
         version: 18.2.0
       react-dom:
-        specifier: 18.2.0
+        specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       tailwind-variants:
         specifier: ^0.1.18
@@ -37,19 +37,19 @@ importers:
         specifier: ^20.10.3
         version: 20.10.3
       '@types/react':
-        specifier: 18.2.47
+        specifier: ^18.2.47
         version: 18.2.47
       '@types/react-dom':
-        specifier: 18.2.18
+        specifier: ^18.2.18
         version: 18.2.18
       autoprefixer:
-        specifier: 10.4.16
+        specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.33)
       eslint:
-        specifier: 8.56.0
+        specifier: ^8.56.0
         version: 8.56.0
       eslint-config-next:
-        specifier: 14.0.4
+        specifier: ^14.0.4
         version: 14.0.4(eslint@8.56.0)(typescript@5.3.3)
       eslint-config-prettier:
         specifier: ^9.1.0
@@ -58,13 +58,13 @@ importers:
         specifier: ^7.1.0
         version: 7.1.0(react@18.2.0)
       postcss:
-        specifier: 8.4.33
+        specifier: ^8.4.33
         version: 8.4.33
       tailwindcss:
-        specifier: 3.4.1
+        specifier: ^3.4.1
         version: 3.4.1
       typescript:
-        specifier: 5.3.3
+        specifier: ^5.3.3
         version: 5.3.3
 
   packages/server:
@@ -2253,8 +2253,8 @@ packages:
       thunky: 1.1.0
     dev: false
 
-  /fs-native-extensions@1.2.3:
-    resolution: {integrity: sha512-DwxIW9fs9o8py05YutQgFcsdcph7nlrg70ncUYXiWAgpAPFza+X7Q/vA2UeyBaK4ekcMmoNzuBVEtU8Ass7Wwg==}
+  /fs-native-extensions@1.2.4:
+    resolution: {integrity: sha512-TtrMxQN+N9Kb/1jjMttHrVmpPG4DrlDOQwgS+mnij5eRMv4KmBlCHGi8U2DtAo1acQhCYG+ZZpgUCKfLVMtzMQ==}
     requiresBuild: true
     dependencies:
       napi-macros: 2.2.2
@@ -3492,7 +3492,7 @@ packages:
     dependencies:
       random-access-storage: 3.0.1
     optionalDependencies:
-      fs-native-extensions: 1.2.3
+      fs-native-extensions: 1.2.4
     dev: false
 
   /random-access-storage@3.0.1:
