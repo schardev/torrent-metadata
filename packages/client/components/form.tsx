@@ -32,7 +32,7 @@ const Form = () => {
 
     // make sure we abort in case the server takes longer to respond for whatever reason
     const controller = new AbortController();
-    setTimeout(() => {
+    const id = setTimeout(() => {
       setError("Fetch timeout.");
       controller.abort();
     }, 10_000);
@@ -42,6 +42,7 @@ const Form = () => {
       body: formData,
       signal: controller.signal,
     });
+    clearTimeout(id)
 
     const serverReq = await res.json();
     // 504 - request timeout
