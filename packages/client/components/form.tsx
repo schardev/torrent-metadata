@@ -30,9 +30,17 @@ const Form = () => {
   const submitFormData = async (formData: FormData) => {
     setIsSubmitted(true);
 
+    // make sure we abort in case the server takes longer to respond for whatever reason
+    const controller = new AbortController();
+    setTimeout(() => {
+      setError("Fetch timeout.");
+      controller.abort();
+    }, 10_000);
+
     const res = await fetch(API_URL, {
       method: "POST",
       body: formData,
+      signal: controller.signal,
     });
 
     const serverReq = await res.json();
