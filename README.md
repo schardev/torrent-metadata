@@ -77,7 +77,8 @@ After successfully querying, it'll send a [`Response`](#response).
     "infoHash": "6e8537c9160e80042f0bc5a880ea8bf9144683ff",
     "magnetURI": "magnet:?xt=urn:btih:6e8537c9160e80042f0bc5a880ea8bf9144683ff&dn=archlinux-2023.06.01-x86_64.iso",
     "name": "archlinux-2023.06.01-x86_64.iso",
-    "peers": 28
+    "peers": 28,
+    "seeds": 69
   }
 }
 ```
@@ -112,10 +113,21 @@ type TorrentResponse = {
     infoHash?: string;
     magnetURI?: string;
     peers?: number;
+    seeds?: number;
     created?: string;
     createdBy?: string;
     comment?: string;
     announce?: string[];
+    trackers_info?: (
+      | {
+          tracker: string;
+          seeds: number;
+          peers: number;
+          downloads: number;
+          response_time: number;
+        }
+      | { tracker: string; error: string }
+    )[];
     files?: Array<{
       name: string;
       size: number;

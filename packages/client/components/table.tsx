@@ -14,10 +14,21 @@ export type TorrentData = {
     infoHash: number;
     magnetURI?: string;
     peers?: number;
+    seeds?: number;
     created?: string;
     createdBy?: string;
     comment?: string;
     announce?: string[];
+    trackers_info?: (
+      | {
+          tracker: string;
+          seeds: number;
+          peers: number;
+          downloads: number;
+          response_time: number;
+        }
+      | { tracker: string; error: string }
+    )[];
     files?: Array<{ name: string; size: string }>;
   };
   message?: string;
@@ -52,6 +63,9 @@ const Table = ({
               "whitespace-nowrap text-sm md:text-base",
             )}>
             {Object.entries(rest).map(([key, value]) => {
+              if (typeof value !== "string" && typeof value !== "number")
+                return;
+
               return (
                 <tr key={key}>
                   <th scope="row">

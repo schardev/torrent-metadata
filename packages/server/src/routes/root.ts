@@ -2,10 +2,12 @@ import express from "express";
 import { isValidTorrentData } from "../middlewares.js";
 import { log } from "../utils.js";
 import WebTorrent, { type Torrent } from "webtorrent";
+import webtorrentHealth, { type TrackerResult } from "webtorrent-health";
 
 const router = express.Router();
 const SITE_URL = process.env.SITE_URL;
 const METADATA_FETCH_TIMEOUT = 6000; // in ms
+const SCRAPING_TIMEOUT = 4500; // in ms
 const webtorrent = new WebTorrent();
 
 const constructData = (torrent: Torrent) => {
@@ -44,6 +46,7 @@ router.post("/", isValidTorrentData);
 
 router.post("/", async (req, res) => {
   log("Init POST ...");
+
   const parsedTorrent = req.parsedTorrent;
   const torrent = webtorrent.add(parsedTorrent, {
     destroyStoreOnDestroy: true,
@@ -64,10 +67,25 @@ router.post("/", async (req, res) => {
     });
   }, METADATA_FETCH_TIMEOUT);
 
-  torrent.on("metadata", () => {
+  torrent.on("metadata", async () => {
     log("Metadata parsed...");
     clearTimeout(timeoutID);
-    res.json({ data: constructData(torrent) });
+
+    let trackerData = {} as TrackerResult;
+    if (Array.isArray(torrent.announce) && torrent.announce.length) {
+      log("Scraping trackers...");
+      trackerData = await webtorrentHealth(torrent, {
+        timeout: SCRAPING_TIMEOUT,
+      });
+    }
+
+    const data = {
+      ...constructData(torrent),
+      seeds: trackerData.seeds,
+      peers: trackerData.peers,
+      trackers_info: trackerData.extra,
+    };
+    res.json({ data });
 
     webtorrent.remove(torrent, {}, () => {
       log("Torrent removed.");
