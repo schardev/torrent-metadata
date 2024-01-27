@@ -1,5 +1,4 @@
 import express from "express";
-import { log } from "./utils.js";
 import rootRouter from "./routes/root.js";
 import { errorHandler } from "./middlewares.js";
 import cors from "cors";
@@ -26,6 +25,6 @@ app.use(errorHandler);
 
 // Main
 app.listen(PORT, () => {
-  log(`Started in ${process.env.NODE_ENV} enviroment.`);
-  log(`Listening on port ${PORT}`);
+  console.log(`Started in ${process.env.NODE_ENV} enviroment.`);
+  console.log(`Listening on port ${PORT}`);
 });
