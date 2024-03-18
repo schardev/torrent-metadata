@@ -46,6 +46,7 @@ const Table = ({
   const sortedFiles = files?.sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
+  const totalFileSize = sortedFiles?.reduce((acc, file) => acc + +file.size, 0);
 
   return (
     <>
@@ -135,6 +136,11 @@ const Table = ({
               <code className="text-xs md:text-sm font-normal align-middle ml-2">
                 ({sortedFiles.length})
               </code>
+              {totalFileSize && (
+                <code className="text-xs md:text-sm font-normal align-middle ml-2">
+                  [{filesize(totalFileSize)}]
+                </code>
+              )}
             </p>
           }>
           <ul className="ml-2 pb-2 border-l border-l-slate-800 space-y-4 text-sm md:text-base overflow-auto">
