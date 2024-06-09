@@ -6,7 +6,8 @@ import multer from "multer";
 
 const app = express();
 const upload = multer();
-const PORT = process.env.PORT || 3001;
+const PORT = +(process.env.PORT || 3001);
+const HOST = process.env.HOST || "127.0.0.1";
 
 // Middlewares
 app.use((req, _, next) => {
@@ -24,7 +25,7 @@ app.use("/", upload.single("torrent_file"), rootRouter);
 app.use(errorHandler);
 
 // Main
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`Started in ${process.env.NODE_ENV} enviroment.`);
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Listening on host ${HOST} on port ${PORT}`);
 });
