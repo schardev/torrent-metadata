@@ -41,21 +41,17 @@ router.get("/ping", (req, res) => {
   res.send(`pong: ${Date.now() - req.startTime}ms`);
 });
 
-// This has to come first for `req.parsedTorrent` to be validated and populated
-router.post("/", isValidTorrentData);
-
-router.post("/", async (req, res) => {
+router.post("/", isValidTorrentData, async (req, res) => {
   log("Init POST ...");
 
-  const parsedTorrent = req.parsedTorrent;
-  const torrent = webtorrent.add(parsedTorrent, {
+  const torrent = webtorrent.add(req.parsedTorrent, {
     destroyStoreOnDestroy: true,
   });
 
   // If the torrent doesn't have enough peers to retrieve metadata, return
   // limited info we get from parsing the magnet URI (the parsed metadata is guaranteed
   // to have `infoHash` field)
-  const timeoutID = setTimeout(async () => {
+  const timeoutID = setTimeout(() => {
     res.status(504).json({
       data: constructData(torrent),
       message:
