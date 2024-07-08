@@ -26,7 +26,7 @@
     "@types/express": "^4.17.21",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.10.3",
-    "@types/webtorrent": "^0.109.7",
+    "@types/webtorrent": "^2.0.0",
     "tsx": "^4.6.2",
     "typescript": "^5.3.2"
   }
