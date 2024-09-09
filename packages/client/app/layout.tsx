@@ -77,7 +77,7 @@ export default function RootLayout({
           inter.variable,
         )}>
         {children}
-        <footer className="px-4 py-4 lg:min-w-[900px] md:max-w-screen-lg">
+        <footer className="px-4 py-4 w-full md:max-w-screen-lg">
           <p className="text-slate-400 text-sm lg:text-base">
             Built by{" "}
             <Link
