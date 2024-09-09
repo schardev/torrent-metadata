@@ -3,6 +3,7 @@ import "@/styles/global.css";
 import clsx from "clsx";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -72,10 +73,29 @@ export default function RootLayout({
       <body
         className={clsx(
           "bg-slate-950 text-slate-50 min-h-screen font-sans selection:bg-slate-600",
-          "flex justify-center",
+          "flex flex-col items-center gap-4",
           inter.variable,
         )}>
         {children}
+        <footer className="px-4 py-4 lg:min-w-[900px] md:max-w-screen-lg">
+          <p className="text-slate-400 text-sm lg:text-base">
+            Built by{" "}
+            <Link
+              href={siteConfig.github}
+              target="_blank"
+              className="underline hover:text-slate-200">
+              schardev
+            </Link>
+            . The source code is available on{" "}
+            <Link
+              href={siteConfig.source}
+              target="_blank"
+              className="underline hover:text-slate-200">
+              GitHub
+            </Link>
+            .
+          </p>
+        </footer>
       </body>
     </html>
   );
