@@ -110,8 +110,8 @@ importers:
         specifier: ^20.10.3
         version: 20.16.5
       '@types/webtorrent':
-        specifier: ^0.109.7
-        version: 0.109.8
+        specifier: ^0.110.0
+        version: 0.110.0
       tsx:
         specifier: ^4.6.2
         version: 4.19.0
@@ -517,8 +517,8 @@ packages:
   '@types/simple-peer@9.11.8':
     resolution: {integrity: sha512-rvqefdp2rvIA6wiomMgKWd2UZNPe6LM2EV5AuY3CPQJF+8TbdrL5TjYdMf0VAjGczzlkH4l1NjDkihwbj3Xodw==}
 
-  '@types/webtorrent@0.109.8':
-    resolution: {integrity: sha512-Ms8xQNWioakNmWCEI7P4upO76KfbjZ8iszWWdNfq2iS02CKz9s5nzdRp9eb53aMvjgqNYqMw/jZ6yhIJwOc4HQ==}
+  '@types/webtorrent@0.110.0':
+    resolution: {integrity: sha512-f2Moh9KWdHqYT1N5hxbaCw213SyYyyHhxOoxJI4c53nwAiq4JCytpySV8cM5FC9oPOE7Y/4nPYbnreJNl9lJRA==}
 
   '@typescript-eslint/eslint-plugin@7.2.0':
     resolution: {integrity: sha512-mdekAHOqS9UjlmyF/LSs6AIEvfceV749GFxoBAjwAv0nkevfKHWQFDMcBZWUiIC5ft6ePWivXoS36aKQ0Cy3sw==}
@@ -3109,7 +3109,7 @@ snapshots:
 
   '@types/bittorrent-protocol@3.1.6':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/body-parser@1.19.5':
     dependencies:
@@ -3118,7 +3118,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/cors@2.8.17':
     dependencies:
@@ -3150,7 +3150,7 @@ snapshots:
 
   '@types/magnet-uri@5.1.5':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/mime@1.3.5': {}
 
@@ -3172,12 +3172,12 @@ snapshots:
 
   '@types/parse-torrent-file@4.0.6':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/parse-torrent@5.8.7':
     dependencies:
       '@types/magnet-uri': 5.1.5
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
       '@types/parse-torrent-file': 4.0.6
 
   '@types/prop-types@15.7.12': {}
@@ -3200,7 +3200,7 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
   '@types/serve-static@1.15.5':
     dependencies:
@@ -3210,12 +3210,12 @@ snapshots:
 
   '@types/simple-peer@9.11.8':
     dependencies:
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
 
-  '@types/webtorrent@0.109.8':
+  '@types/webtorrent@0.110.0':
     dependencies:
       '@types/bittorrent-protocol': 3.1.6
-      '@types/node': 20.16.5
+      '@types/node': 22.5.4
       '@types/parse-torrent': 5.8.7
       '@types/simple-peer': 9.11.8
 
