@@ -2,6 +2,7 @@ import { ErrorRequestHandler, RequestHandler } from "express";
 import parseTorrent from "parse-torrent";
 import { error, log } from "./utils.js";
 
+// @ts-expect-error TODO
 export const isValidTorrentData: RequestHandler = async (req, res, next) => {
   log("Validating torrent query...");
 
@@ -20,7 +21,7 @@ export const isValidTorrentData: RequestHandler = async (req, res, next) => {
       log("Parsing hash or URI...");
       req.parsedTorrent = await parseTorrent(hashOrURIQuery);
     } catch (err) {
-      log(err);
+      error(err);
       return res.status(400).json({
         error: "Invalid info hash or magnet URI.",
         query: hashOrURIQuery,
@@ -33,7 +34,7 @@ export const isValidTorrentData: RequestHandler = async (req, res, next) => {
       log("Parsing torrent file...");
       req.parsedTorrent = await parseTorrent(torrentFileQuery.buffer);
     } catch (err) {
-      log(err);
+      error(err);
       return res.status(400).json({
         error: "Torrent file is invalid.",
         query: torrentFileQuery.originalname,
