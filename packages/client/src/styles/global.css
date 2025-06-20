@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: var(--color-slate-900);
+  }
+
+  ::-webkit-scrollbar {
+    background-color: var(--color-slate-900);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-slate-800);
+  }
+
+  @supports (scrollbar-color: auto) {
+    :root {
+      scrollbar-color: var(--color-slate-800) var(--color-slate-900);
+    }
+  }
+}

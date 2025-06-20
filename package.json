@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && pnpm -r run lint"
   },
-  "packageManager": "pnpm@9.15.4",
+  "packageManager": "pnpm@10.12.1",
   "devDependencies": {
     "prettier": "^3.1.0"
   },

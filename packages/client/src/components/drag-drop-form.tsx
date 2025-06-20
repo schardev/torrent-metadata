@@ -3,7 +3,6 @@
 import { CloudUpload } from "iconoir-react";
 import clsx from "clsx";
 import { ChangeEvent, DragEvent } from "react";
-import { buttonVariants } from "./button";
 
 const DragDropForm = ({
   submitFormData,
@@ -23,17 +22,17 @@ const DragDropForm = ({
   };
 
   const handleDragEnter = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.classList.add("!border-slate-100");
+    e.currentTarget.classList.add("border-slate-100!");
   };
 
   const handleDragLeave = (e: DragEvent<HTMLDivElement>) => {
-    e.currentTarget.classList.remove("!border-slate-100");
+    e.currentTarget.classList.remove("border-slate-100!");
   };
 
   const handleDrop = (e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     handleFile(e.dataTransfer.files[0]);
-    e.currentTarget.classList.remove("!border-slate-100");
+    e.currentTarget.classList.remove("border-slate-100!");
   };
 
   const handleFileAdd = (e: ChangeEvent<HTMLInputElement>) => {
@@ -62,10 +61,10 @@ const DragDropForm = ({
       </div>
       <label
         htmlFor="torrent_file"
-        className={buttonVariants({
-          color: "secondary",
-          className: "inline px-4 py-2",
-        })}>
+        className={clsx(
+          "inline px-4 py-2 rounded-md font-medium",
+          "bg-slate-700 hover:bg-slate-800 text-slate-400",
+        )}>
         Browse Files
       </label>
       <input

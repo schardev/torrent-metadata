@@ -14,14 +14,16 @@ const TextForm = () => {
         minLength={32}
         required
         className={clsx(
-          "flex-grow p-2 md:px-4 md:py-3 bg-slate-950 rounded-md text-slate-50",
+          "grow p-2 md:px-4 md:py-3 bg-slate-950 rounded-md text-slate-50",
           "border border-slate-700",
           "placeholder:text-sm placeholder:text-slate-400 md:placeholder:text-base",
-          "focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-300",
+          "focus-visible:outline focus-visible:outline-slate-300",
           "focus-visible:outline-offset-2",
         )}
       />
-      <Button className="flex gap-2 items-center p-2 md:px-4 text-sm md:text-base">
+      <Button
+        type="submit"
+        className="flex gap-2 items-center p-2 md:px-4 text-sm md:text-base">
         <span>Search</span>
         <Search className="w-5" />
       </Button>
