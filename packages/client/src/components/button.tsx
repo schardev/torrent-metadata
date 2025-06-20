@@ -1,31 +1,25 @@
-import { tv, type VariantProps } from "tailwind-variants";
-
-export const buttonVariants = tv({
-  base: "rounded-md font-medium",
-  variants: {
-    color: {
-      primary: "bg-slate-50 hover:bg-slate-200 text-slate-950",
-      secondary: "bg-slate-700 hover:bg-slate-800 text-slate-400",
-    },
-  },
-  defaultVariants: {
-    color: "primary",
-  },
-});
+import clsx from "clsx";
 
 type ButtonProps = {
-  variant?: VariantProps<typeof buttonVariants>;
+  color?: "primary" | "secondary";
 } & React.ComponentProps<"button">;
 
 const Button = ({
   children,
   className,
-  variant,
+  color = "primary",
   ...restProps
 }: ButtonProps) => {
   return (
     <button
-      className={buttonVariants({ ...variant, className })}
+      type="button"
+      className={clsx(
+        "rounded-md font-medium",
+        color === "primary" && "bg-slate-50 hover:bg-slate-200 text-slate-950",
+        color === "secondary" &&
+          "bg-slate-700 hover:bg-slate-800 text-slate-400",
+        className,
+      )}
       {...restProps}>
       {children}
     </button>

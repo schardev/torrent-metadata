@@ -84,7 +84,6 @@ const Table = ({
               </th>
               <td>
                 <Button
-                  variant={{ color: "primary" }}
                   className="px-2 py-1 flex gap-1 items-center"
                   onClick={async () => {
                     const copied = await copyToClipboard(magnetURI || "");
