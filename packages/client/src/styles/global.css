@@ -19,7 +19,7 @@
     background-color: theme(colors.slate.800);
   }
 
-  @supports (scrollbar-color: red green) {
+  @supports (scrollbar-color: auto) {
     :root {
       scrollbar-color: theme(colors.slate.800) theme(colors.slate.900);
     }
