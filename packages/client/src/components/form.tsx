@@ -42,7 +42,7 @@ const Form = () => {
       body: formData,
       signal: controller.signal,
     });
-    clearTimeout(id)
+    clearTimeout(id);
 
     const serverReq = await res.json();
     // 504 - request timeout
