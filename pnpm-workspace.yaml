@@ -1,2 +1,10 @@
 packages:
-  - "packages/*"
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - bufferutil
+  - esbuild
+  - node-datachannel
+  - utf-8-validate
+  - utp-native
