@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "debug": "^4.4.1",
     "express": "^5.1.0",
-    "multer": "2.0.1",
+    "multer": "2.0.2",
     "parse-torrent": "^11.0.18",
     "webtorrent": "^2.6.8",
     "webtorrent-health": "^1.2.0"
