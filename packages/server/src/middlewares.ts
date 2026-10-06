@@ -2,7 +2,6 @@ import { ErrorRequestHandler, RequestHandler } from "express";
 import parseTorrent from "parse-torrent";
 import { error, log } from "./utils.js";
 
-// @ts-expect-error TODO
 export const isValidTorrentData: RequestHandler = async (req, res, next) => {
   log("Validating torrent query...");
 
