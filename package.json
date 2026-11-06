@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && pnpm -r run lint"
   },
-  "packageManager": "pnpm@12.10.0+sha512.122a7b6ddf9d40268bc0db1a9780899b95e4fa8badfca7bd450615ad8cf7c2659f5f569c20ed7c53886bc7b08d0d50a54f4ad50706847f5682ec6c5048416539",
+  "packageManager": "pnpm@12.17.0+sha512.b8d223ebec04b580a89ed206daa71d1bccb6a1ee1d52efa95cc3b0db75271561df8f0d8e2c43add39c5ec08018af7a8a95108e7090f95a29f88727b7a40fd53d",
   "devDependencies": {
     "prettier": "^3.1.0"
   },
